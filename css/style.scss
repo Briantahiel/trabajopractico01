@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@mixin position ($content){
+    display: flex;
+    justify-content: $content;
+}
+%font{
+    font-family:'Dancing Script', cursive;
+}
+%position{
+    display: flex;
+    justify-content: center;
+}
+%center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+%visibility{   
+    position: absolute;
+    visibility: hidden;    
+}
+$fondo: rgb(122, 131, 125);
+$colorfont:rgb(31, 54, 61);
+.colores{
+    background-color: $fondo;
+    color: $colorfont;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color:rgb(165, 206, 205);
+}
+    header{
+        a{
+            @extend %visibility;
+        }
+    }
+    nav{
+        height: 50px;
+        background-color:rgb(73, 88, 95) ;
+        a{
+            @extend %visibility;
+            top: 0px;
+        }
+        ul{
+            @include position (flex-end);
+            list-style: none; 
+        li{          
+            margin-right: 20px;
+            margin-top: 10px;  
+            @extend %font;
+            font-size: 1.8em;            
+            } 
+                li:hover{
+                    color: lightblue;
+                }                 
+        }  
+    }
+    figure{
+        img{
+            background-size: contain;
+            border: 2px solid black;
+        }
+    }
+    article{
+        @include position (space-around);
+            .card{         
+                width: 250px;
+                -webkit-box-shadow: 11px 11px 23px -3px rgba(0,0,0,0.75);
+                -moz-box-shadow: 11px 11px 23px -3px rgba(0,0,0,0.75);
+                box-shadow: 11px 11px 23px -3px rgba(0,0,0,0.75);
+                margin: 10px;
+                background-color: whitesmoke;
+                border-radius: 8px;           
+                    h2{
+                        @extend %position;
+                        @extend .colores;
+                        @extend %font;
+                        font-size: 2.6em;
+                        }
+                           h2:hover{
+                                color: lightblue;
+                            }
+                                p{
+                                    text-align: center;
+                                    margin: 10px;
+                                    padding: 10px;
+                                    }
+                            }
+                    }
+    section{
+        @extend %position;
+        padding-top: 50px;
+        padding-bottom: 50px;
+            .texto{
+                width: 650px;
+                    h1{    
+                        font-size: 2.5em; 
+                        @extend %font;        
+                        @extend %position;                        
+                        }
+                            p{ 
+                            @extend %font;    
+                            font-size: 1.3em;
+                            text-align: center;                         
+                                }              
+                        }    
+                }
+    .background{
+        background-color: black;
+            p{
+                text-shadow: 2px 2px 8px black;
+                color:black;
+                font-size: 1.2em;
+                position: relative;
+                bottom: 250px; 
+                text-align: center;            
+                }
+        }
+    footer{
+        background-color: black;
+        .redes{
+            @extend %position;
+                a{
+                    font-size: 0.5em;
+                    color: whitesmoke;
+                    margin: 5px;
+                    }
+                        a:hover{
+                            color: orange;
+                        }
+            }    
+        }
+    .derechos{
+        text-align: center;
+        padding-top: 30px;
+        background-color: black;
+            p{
+                color:whitesmoke;
+                padding-bottom: 20px;
+                }
+        }
+       .top{
+            border-radius: 50%;
+            background-color: rgb(46, 72, 87);
+            border: 5px solid whitesmoke;       
+            width: 50px;
+            height: 50px;       
+            @extend %position;
+            flex-direction: row;           
+            align-items: center;       
+            position: fixed;
+            bottom: 15px;
+            right: 15px;       
+        }
+@media (max-width:450px){        
+#menu{
+    position: relative;
+    top: -50;
+    background:lightblue;
+    opacity: 0;
+    width: 0px;
+    height: 135px;
+    transition: width 0.5s, opacity 0.9s;       
+    }
+ #menu:target{
+            width: 180px;
+            opacity: 95%;
+            z-index: 3;
+        }    
+header{
+    position: absolute;
+    z-index: 2;
+    a{
+        position: absolute;
+        visibility: visible;
+    }
+}
+menu{
+    position: absolute;
+    top: 0;
+}
+nav{
+    a{
+        visibility: visible;
+        position: absolute;
+        top: 0px;
+    }
+    ul{
+    display: flex;
+    flex-direction: column; 
+    margin-left: 60px;
+    list-style: none;
+        li{
+            font-size: 1.2em;
+            }      
+        }
+    }
+figure{
+    img{
+        height: 450px;
+        width: 100%;
+    }   
+}
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+        .card{  
+            height: 100%;
+            width: 250px;
+            border: 1px solid black;
+            margin: 10px; 
+            padding: 10px;
+            -webkit-box-shadow: 11px 11px 23px -3px rgba(0,0,0,0.75);
+            -moz-box-shadow: 11px 11px 23px -3px rgba(0,0,0,0.75);
+            box-shadow: 11px 11px 23px -3px rgba(0,0,0,0.75);           
+                }       
+        }
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        .texto{ 
+            width: 100%;  
+                }    
+        } 
+    }
